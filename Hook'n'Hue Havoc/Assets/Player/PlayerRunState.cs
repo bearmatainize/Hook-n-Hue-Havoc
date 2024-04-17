@@ -8,10 +8,11 @@ public class PlayerRunState : PlayerBaseState
     }
 
     public override void UpdateState(PlayerStateManager player) {
-        player.thirdPersonController.movePivot();
-        player.thirdPersonController.moveController();
+        // Move and rotate the player based on input
+        player.firstPersonController.Update();
 
-        if(player.thirdPersonController.xInputMovement * player.thirdPersonController.xInputMovement + player.thirdPersonController.yInputMovement * player.thirdPersonController.yInputMovement == 0) {
+        if (Mathf.Approximately(player.firstPersonController.xInput, 0f) && Mathf.Approximately(player.firstPersonController.zInput, 0f))
+        {
             player.SwitchState(player.IdleState);
         }
         // Check for input to fire the grapple hook

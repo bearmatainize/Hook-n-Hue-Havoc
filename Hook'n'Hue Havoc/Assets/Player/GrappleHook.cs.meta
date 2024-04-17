@@ -3,7 +3,8 @@ guid: fad3bdaf78b0a496091979cbb42ce4a6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - grappleLineRenderer: {fileID: 3406519603727206996, guid: 6e7db7bce10964ceab5c9067ed0080db, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

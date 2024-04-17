@@ -11,7 +11,8 @@ public class PlayerIdleState : PlayerBaseState
     }
 
     public override void UpdateState(PlayerStateManager player) {
-        if(player.thirdPersonController.xInputMovement * player.thirdPersonController.xInputMovement + player.thirdPersonController.yInputMovement * player.thirdPersonController.yInputMovement > 0) {
+        if(!Mathf.Approximately(player.firstPersonController.xInput, 0f) || !Mathf.Approximately(player.firstPersonController.zInput, 0f))
+        {
             player.SwitchState(player.RunState);
         }
         // Check for input to fire the grapple hook

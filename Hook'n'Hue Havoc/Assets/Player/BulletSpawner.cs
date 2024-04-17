@@ -8,39 +8,20 @@ public class BulletSpawner : MonoBehaviour
     public Transform spawnPoint;
     public float bulletSpeed = 10f;
 
-    public void SpawnBullet()
+    public void SpawnBullet(Vector3 spawnDirection)
     {
-        // Instantiate a bullet at the spawn point
-        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+        // Instantiate bullet at the spawn point with the specified direction
+        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
 
         // Get the rigidbody component of the bullet
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
 
-        // Check if the bullet has a rigidbody component
-        if (bulletRigidbody != null)
-        {
-            // Set the velocity of the bullet to make it move forward
-            bulletRigidbody.velocity = spawnPoint.forward * bulletSpeed;
+        
+        // Set the velocity of the bullet to make it move forward
+        bulletRigidbody.velocity = spawnDirection * bulletSpeed;
 
-            // Disable gravity for the bullet
-            bulletRigidbody.useGravity = false;
-        }
-        else
-        {
-            Debug.LogWarning("Bullet prefab does not have a Rigidbody component.");
-        }
-    }
-
-    private void OnCollision(Collision collision)
-    {
-        // Check if the bullet collided with anything
-        if (collision.gameObject != null)
-        {
-            // Instantiate paint effect at the collision point
-            //Instantiate(paintPrefab, collision.contacts[0].point, Quaternion.identity);
-
-            // Destroy the bullet
-            Destroy(gameObject);
-        }
+        // Disable gravity for the bullet
+        bulletRigidbody.useGravity = false;
+        
     }
 }

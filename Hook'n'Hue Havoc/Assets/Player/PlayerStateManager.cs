@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateManager : MonoBehaviour
 {
 
-    public ThirdPersonController thirdPersonController;
+    public FirstPersonController firstPersonController;
     public Animator playerAnim;
     public PlayerInput playerInput;
     public GrappleHook grappleHook;
