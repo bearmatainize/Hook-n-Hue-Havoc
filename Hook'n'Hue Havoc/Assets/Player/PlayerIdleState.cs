@@ -20,9 +20,10 @@ public class PlayerIdleState : PlayerBaseState
         {
             player.SwitchState(player.GrappleState);
         }
-        /*if(player.playerMovement.jumpRequest)
+        
+        if (player.playerInput.actions["Jump"].IsPressed() && player.firstPersonController.IsGrounded())
         {
             player.SwitchState(player.JumpState);
-        }*/
+        }
     }
 }

@@ -5,21 +5,54 @@ using UnityEngine.InputSystem;
 
 public class PlayerGrappleState : PlayerBaseState
 {
+    private bool isGrappleFired = false;
+    //private bool isGrappleCooldown = false;
+    //private float grappleCooldown = 1.0f;
+    //private float grappleTimer = 0.0f;
+
     public override void EnterState(PlayerStateManager player)
     {
         // Initialize grapple hook
         player.grappleHook.Initialize(player.firstPersonController.transform);
-        player.grappleHook.FireGrapple();
+
+        // Subscribe to the performed event of the Grapple action
+        player.playerInput.actions["Grapple"].performed += ctx => GrappleStarted(player);
+        player.playerInput.actions["Grapple"].canceled += ctx => GrappleCanceled(player);
     }
 
     public override void UpdateState(PlayerStateManager player)
     {
-        // Check for input to release the grapple hook
-        if (player.playerInput.actions["Release"].IsPressed())
+        
+    }
+
+    public void ExitState(PlayerStateManager player)
+    {
+        // Unsubscribe from the performed event of the Grapple action
+        player.playerInput.actions["Grapple"].performed -= ctx => GrappleStarted(player);
+        player.playerInput.actions["Grapple"].canceled -= ctx => GrappleCanceled(player);
+        player.SwitchState(player.IdleState);
+    }
+
+    private void GrappleStarted(PlayerStateManager player)
+    {
+        // Fire the grapple if it is not already fired
+        if (!isGrappleFired)
+        {
+            player.grappleHook.FireGrapple();
+            isGrappleFired = true;
+            //isGrappleCooldown = false;
+        }
+    }
+
+    private void GrappleCanceled(PlayerStateManager player)
+    {
+        if (isGrappleFired)
         {
             player.grappleHook.ReleaseGrapple();
-            player.SwitchState(player.IdleState); // Switch back to idle state
+            ExitState(player);
+            isGrappleFired = false;
+            //isGrappleCooldown = true;
+            //grappleTimer = 0.0f; // Reset the timer
         }
     }
 }
-

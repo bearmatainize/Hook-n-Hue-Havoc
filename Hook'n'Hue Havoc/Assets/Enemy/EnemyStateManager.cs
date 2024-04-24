@@ -7,12 +7,13 @@ public class EnemyStateManager : MonoBehaviour
 
     public Animator enemyAnim;
 
-    public Gameplay gameplay;
-
     EnemyBaseState currentState;
 
     public EnemyWanderState WanderState = new EnemyWanderState();
     public EnemyChaseState ChaseState = new EnemyChaseState();
+    public EnemyShootState ShootState = new EnemyShootState();
+    
+    public BulletSpawner enemyBulletSpawner;
 
     // Start is called before the first frame update
     void Start()

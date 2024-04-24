@@ -20,5 +20,10 @@ public class PlayerRunState : PlayerBaseState
         {
             player.SwitchState(player.GrappleState);
         }
+        
+        if (player.playerInput.actions["Jump"].IsPressed() && player.firstPersonController.IsGrounded())
+        {
+            player.SwitchState(player.JumpState);
+        }
     }
 }

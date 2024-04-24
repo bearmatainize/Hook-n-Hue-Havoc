@@ -19,8 +19,10 @@ public class EnemyWanderState : EnemyBaseState
     public override void UpdateState(EnemyStateManager enemy) {
 
         playerPosition = GameObject.Find("PlayerPrefab").transform.position;
-
-        if(Vector3.Distance(enemy.transform.position, playerPosition) <= 15) {
+        
+        if(Vector3.Distance(enemy.transform.position, playerPosition) <= enemy.ShootState.shootingRange) {
+            enemy.SwitchState(enemy.ShootState);
+        } else if(Vector3.Distance(enemy.transform.position, playerPosition) <= 15) {
             enemy.SwitchState(enemy.ChaseState);
         } else {
             Wander();

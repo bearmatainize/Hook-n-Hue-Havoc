@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Bullet
   - Dummy
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - groundMask
   - Water
   - UI
   - 

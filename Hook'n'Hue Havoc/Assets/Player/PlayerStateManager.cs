@@ -16,8 +16,8 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerIdleState IdleState = new PlayerIdleState();
     public PlayerRunState RunState = new PlayerRunState();
     public PlayerGrappleState GrappleState = new PlayerGrappleState();
-    /*public PlayerJumpState JumpState = new PlayerJumpState();
-    public PlayerFallState FallState = new PlayerFallState();*/
+    public PlayerJumpState JumpState = new PlayerJumpState();
+    //public PlayerFallState FallState = new PlayerFallState();
 
 
     // Start is called before the first frame update
