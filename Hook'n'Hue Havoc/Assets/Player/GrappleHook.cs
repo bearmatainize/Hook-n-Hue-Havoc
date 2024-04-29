@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GrappleHook : MonoBehaviour
 {
-    public float grappleSpeed = 10f;
-    public float maxDistance = 20f;
+    public float grappleSpeed = 12f;
+    public float maxDistance = 100f;
     public LayerMask grappleableLayers;
 
     private Transform playerTransform;
@@ -45,6 +45,7 @@ public class GrappleHook : MonoBehaviour
     public void ReleaseGrapple()
     {
         isGrappling = false;
+        
         // Disable the Line Renderer
         grappleLineRenderer.enabled = false;
     }
@@ -74,12 +75,12 @@ public class GrappleHook : MonoBehaviour
             else
             {
                 // If close to the grapple point, stop movement
-                Vector3 newPosition = grapplePoint + grappleDir * 0.1f; // Move the player slightly away from the surface
+                Vector3 newPosition = grapplePoint + grappleDir * 0.1f * Time.deltaTime; // Move the player slightly away from the surface
 
                 // Perform a movement check to ensure the new position is valid
                 if (!Physics.Raycast(playerTransform.position, grappleDir, 0.1f, grappleableLayers))
                 {
-                    controller.Move(grappleDir * 0.1f);
+                    controller.Move(grappleDir * 0.1f * Time.deltaTime);
                 }
 
                 // Update the Line Renderer's positions

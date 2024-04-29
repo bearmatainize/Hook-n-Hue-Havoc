@@ -7,10 +7,22 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if (gameObject.CompareTag("Player"))
+        {
+            HUDManager.instance.UpdateHealthBar(health, 100f);
+        }
+        
         if (health <= 0)
         {
-            // Handle the character's death here
-            Debug.Log(gameObject.name + " has died.");
+            if (gameObject.CompareTag("Player"))
+            {
+                EndGame.instance.PlayerKilled();
+            }
+            else
+            {
+                EndGame.instance.EnemyKilled();
+                Destroy(gameObject);
+            }
         }
     }
 }

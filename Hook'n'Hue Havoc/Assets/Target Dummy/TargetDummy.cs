@@ -18,6 +18,7 @@ public class TargetDummy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            EndGame.instance.EnemyKilled();
         }
     }
 

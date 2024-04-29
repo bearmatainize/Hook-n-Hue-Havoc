@@ -127,4 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614a9f926f19c4be78b9f41aefe79823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletMaterial: {fileID: 2100000, guid: 23a97ccab953342129fa5d88a97f0d6a, type: 2}
   paintSplatterPrefab: {fileID: 5761659495213204175, guid: 459cd054cddbe4fa185d1d515986f13f, type: 3}
+  paintMaterials:
+  - {fileID: 2100000, guid: 5558dc28de8d84e49995441066b80082, type: 2}
+  - {fileID: 2100000, guid: 82ee1febf9a674787bb8f497963c0536, type: 2}
+  - {fileID: 2100000, guid: ac6b2c583ed3e4fa4b4e2ba71b47b8c5, type: 2}
+  - {fileID: 2100000, guid: 12095f5e5e6a74096b7a987b2081c527, type: 2}
+  damage: 34
+  playerColor: {r: 0, g: 0, b: 1, a: 1}
+  enemyColor: {r: 1, g: 0.65, b: 0, a: 1}
+  isPlayerBullet: 0

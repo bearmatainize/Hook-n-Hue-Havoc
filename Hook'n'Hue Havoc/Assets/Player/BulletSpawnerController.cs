@@ -31,6 +31,6 @@ public class BulletSpawnerController : MonoBehaviour
         // Calculate the direction of the bullet based on the camera's forward direction
         Vector3 spawnDirection = playerCamera.transform.forward;
 
-        bulletSpawner.SpawnBullet(spawnDirection);
+        bulletSpawner.SpawnBullet(spawnDirection, true);
     }
 }

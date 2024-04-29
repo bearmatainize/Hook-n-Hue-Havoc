@@ -6,9 +6,9 @@ public class BulletSpawner : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform spawnPoint;
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 20f;
 
-    public void SpawnBullet(Vector3 spawnDirection)
+    public void SpawnBullet(Vector3 spawnDirection, bool isPlayerBullet)
     {
         // Instantiate bullet at the spawn point with the specified direction
         GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
@@ -23,5 +23,8 @@ public class BulletSpawner : MonoBehaviour
         // Disable gravity for the bullet
         bulletRigidbody.useGravity = false;
         
+        // Set the isPlayerBullet variable of the Bullet script
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.isPlayerBullet = isPlayerBullet;
     }
 }
